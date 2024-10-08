@@ -160,7 +160,7 @@ async function retrieveUser(username){
 
 }
 
-retrieveUser("")
+retrieveUser("wmurphy-collabstar")
 
 
 export {Profile, updateUI}
