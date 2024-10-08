@@ -57,6 +57,11 @@ Today, I want to write failing code for one task:
  * Added JSDoc strings in order to make this file make more sense.
  */
 
+/**
+ * 10/7/2024:
+ * Added rest of code to Github, and added script back into HTML, as well as changed allow-origin property to the github pages site, but the data returned is "undefined". My theory is that either my API key was typed in incorrectly, or something else is happening. For now, I will edit the code so that the content will not change if the data is undefined.
+ */
+
 
 
 //Is there a better way to group these commands together? We can see what is standards compliant, best practice, and clean
@@ -151,9 +156,11 @@ async function retrieveUser(username){
     console.log("Console:", data.login)
     console.log("Console:", data.followers)
     console.log("Console:", data.following)
-    const currentProfile = new Profile(data.avatar_url, data.html_url, data.name, data.login, data.bio, data.public_repos, data.followers, data.following)
-    currentProfile.printProfile()
-    updateUI(currentProfile)
+    if (!data){
+        const currentProfile = new Profile(data.avatar_url, data.html_url, data.name, data.login, data.bio, data.public_repos, data.followers, data.following)
+        currentProfile.printProfile()
+        updateUI(currentProfile)
+    }
 }).catch(function (err){
     console.warn(err)
 })
